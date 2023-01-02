@@ -26,8 +26,20 @@ class OpenAiService
       'presence_penalty' => 0,
     ]);
       $json = json_decode($complete, true);
-      dd($json);
-      
-    return 'history';
+      //dd($json);
+      //si le tableau 0 et la clef choices existe alors $json est egal à ce contenu là.
+      if (isset($json['choices'][0]['text'])) {
+        $json = $json['choices'][0]['text'];
+
+          return $json;
+      }
+      //sinon
+      if (isset($json['error'])){
+        $json = 'Une erreur est survenue, Père Castor ne connait pas toutes les REGEX du monde';
+        
+          return $json;
+      }
+
+    //return 'history';
   }
 }
