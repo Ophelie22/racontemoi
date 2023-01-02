@@ -21,6 +21,12 @@ class RegexType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
+                'attr' => [
+                    //requete post sur l'url racine
+                    'hx-post' => '/',
+                    //target sur  id reponse qui est dans notre div du formulaire
+                    'hx-target' => '#response'
+                ],
 
             ])
         ;
